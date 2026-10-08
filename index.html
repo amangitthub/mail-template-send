@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior:smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mail Template Send – HTML Email Templates, Preview &amp; Copy</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+  :root{--bs-primary:#341350;--bs-primary-rgb:52,19,80;--bs-link-color:#341350;--bs-body-font-family:'Poppins','Noto Sans Devanagari',sans-serif}
+  body{background:#f8f4fc;font-family:var(--bs-body-font-family)}
+  .mono{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace}
+  .btn{border-radius:50rem;font-weight:600;padding:.55rem 1.3rem;transition:.2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(52,19,80,.25)}
+  .btn-sm{padding:.4rem .9rem}.btn-lg{padding:.8rem 1.8rem}
+  .btn-primary{--bs-btn-bg:#341350;--bs-btn-border-color:#341350;--bs-btn-hover-bg:#4b1d73;--bs-btn-hover-border-color:#4b1d73;--bs-btn-active-bg:#240d38;--bs-btn-active-border-color:#240d38}
+  .btn-outline-primary{--bs-btn-color:#341350;--bs-btn-border-color:#341350;--bs-btn-hover-bg:#341350;--bs-btn-hover-border-color:#341350;--bs-btn-active-bg:#341350}
+  .btn-dark{--bs-btn-bg:#1c1030;--bs-btn-border-color:#1c1030}
+  .grad{background:linear-gradient(90deg,#341350,#a21caf,#341350);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+  @keyframes shine{to{background-position:200%}}
+  @keyframes blink{50%{opacity:0}}.cur{animation:blink 1s steps(1) infinite}
+  .reveal{opacity:0;transform:translateY(24px);transition:.6s}.reveal.show{opacity:1;transform:none}
+  .lift{transition:.25s}.lift:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(52,19,80,.18)!important}
+  section{scroll-margin-top:70px}
+  .term{background:#120a1f;border-radius:14px;box-shadow:0 20px 50px rgba(52,19,80,.35);overflow:hidden}
+  .term-bar{background:#1e1333}.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+  #term{color:#e9d5ff;font-size:13.5px;min-height:230px;margin:0;white-space:pre-wrap}
+  .c-ok{color:#4ade80}.c-cmd{color:#f0abfc}
+  .thumb{height:300px;overflow:hidden;background:#ece6f4;position:relative}
+  .thumb iframe{width:640px;height:900px;border:0;transform-origin:top left;pointer-events:none;position:absolute;left:0;top:0}
+  #code{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:13px;background:#120a1f;color:#a7f3d0;border:0;min-height:560px;resize:vertical;white-space:pre;tab-size:2}
+  #code::placeholder{color:#6b5b83}
+  #frameWrap{transition:max-width .25s;margin:auto}
+  #preview,#mFrame{width:100%;height:560px;border:0;background:#fff}
+  footer a{text-decoration:none;opacity:.8}footer a:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-white border-bottom shadow-sm sticky-top">
+  <div class="container-xl">
+    <a class="navbar-brand fw-bold mono fs-5" href="#top"><i class="bi bi-envelope-paper-heart-fill text-primary"></i> Mail Template <span class="text-primary">Send</span><span class="cur text-success">_</span></a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto gap-md-1 align-items-md-center">
+        <li class="nav-item"><a class="nav-link" href="#top" data-i18n="nWhy"></a></li>
+        <li class="nav-item"><a class="nav-link" href="#how" data-i18n="nHow"></a></li>
+        <li class="nav-item"><a class="nav-link" href="#templates" data-i18n="nTpl"></a></li>
+        <li class="nav-item"><a class="nav-link" href="#editor" data-i18n="nEd"></a></li>
+        <li class="nav-item ms-md-2 my-2 my-md-0"><div class="btn-group btn-group-sm" id="langBtns"><button class="btn btn-outline-primary" data-l="en">EN</button><button class="btn btn-outline-primary" data-l="hi">HINDI</button></div></li>
+        <li class="nav-item"><a class="btn btn-primary btn-sm ms-md-2" href="#editor"><span data-i18n="nTry"></span> <i class="bi bi-arrow-right"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="py-5">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <span class="badge text-bg-light border text-primary mb-3 px-3 py-2"><i class="bi bi-stars"></i> <span data-i18n="badge"></span></span>
+        <h1 class="display-5 fw-bold" data-i18n="h1"></h1>
+        <p class="lead text-secondary" data-i18n="lead"></p>
+        <a href="#templates" class="btn btn-primary btn-lg me-2 mb-2"><i class="bi bi-grid"></i> <span data-i18n="cta1"></span></a>
+        <a href="#editor" class="btn btn-outline-primary btn-lg mb-2"><i class="bi bi-terminal"></i> <span data-i18n="cta2"></span></a>
+      </div>
+      <div class="col-lg-6 reveal">
+        <div class="term">
+          <div class="term-bar d-flex align-items-center gap-2 px-3 py-2">
+            <span class="dot bg-danger"></span><span class="dot bg-warning"></span><span class="dot bg-success"></span>
+            <span class="mono small text-secondary ms-2">aman@mail-template-send:~</span>
+          </div>
+          <div class="p-3 mono"><pre id="term" class="mono"></pre></div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-4">
+      <div class="col-6 col-lg-3 reveal"><div class="card border-0 shadow-sm h-100 lift p-3"><div class="fs-2">🎨</div><b data-i18n="f1t"></b><small class="text-secondary" data-i18n="f1d"></small></div></div>
+      <div class="col-6 col-lg-3 reveal"><div class="card border-0 shadow-sm h-100 lift p-3"><div class="fs-2">⚡</div><b data-i18n="f2t"></b><small class="text-secondary" data-i18n="f2d"></small></div></div>
+      <div class="col-6 col-lg-3 reveal"><div class="card border-0 shadow-sm h-100 lift p-3"><div class="fs-2">📋</div><b data-i18n="f3t"></b><small class="text-secondary" data-i18n="f3d"></small></div></div>
+      <div class="col-6 col-lg-3 reveal"><div class="card border-0 shadow-sm h-100 lift p-3"><div class="fs-2">📱</div><b data-i18n="f4t"></b><small class="text-secondary" data-i18n="f4d"></small></div></div>
+    </div>
+  </div>
+</header>
+
+<section id="how" class="py-5 bg-white border-top border-bottom">
+  <div class="container-xl">
+    <h2 class="fw-bold text-center reveal" data-i18n="howT"></h2>
+    <p class="text-center text-secondary reveal" data-i18n="howS"></p>
+    <div class="row g-3 mt-2">
+      <div class="col-md-6 col-lg-3 reveal"><div class="card h-100 border-0 bg-body-tertiary lift p-3"><span class="badge bg-primary rounded-circle align-self-start mb-2">1</span><b data-i18n="s1t"></b><small class="text-secondary" data-i18n="s1d"></small></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card h-100 border-0 bg-body-tertiary lift p-3"><span class="badge bg-primary rounded-circle align-self-start mb-2">2</span><b data-i18n="s2t"></b><small class="text-secondary" data-i18n="s2d"></small></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card h-100 border-0 bg-body-tertiary lift p-3"><span class="badge bg-primary rounded-circle align-self-start mb-2">3</span><b data-i18n="s3t"></b><small class="text-secondary" data-i18n="s3d"></small></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card h-100 border-0 bg-body-tertiary lift p-3"><span class="badge bg-primary rounded-circle align-self-start mb-2">4</span><b data-i18n="s4t"></b><small class="text-secondary" data-i18n="s4d"></small></div></div>
+    </div>
+    <div class="alert alert-warning mt-4 mb-0 small reveal" data-i18n="warn"></div>
+  </div>
+</section>
+
+<section id="templates" class="py-5">
+  <div class="container-xl">
+    <h2 class="fw-bold text-center reveal" data-i18n="tplT"></h2>
+    <p class="text-center text-secondary reveal" data-i18n="tplS"></p>
+    <div id="gallery" class="row g-4 mt-1"></div>
+  </div>
+</section>
+
+<section id="editor" class="py-5 bg-white border-top">
+  <div class="container-xl">
+    <h2 class="fw-bold text-center reveal" data-i18n="edT"></h2>
+    <p class="text-center text-secondary reveal" data-i18n="edS"></p>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm overflow-hidden h-100">
+          <div class="term-bar d-flex align-items-center gap-2 px-3 py-2">
+            <span class="dot bg-danger"></span><span class="dot bg-warning"></span><span class="dot bg-success"></span>
+            <span class="mono small text-light ms-2">~/mail-template-send $ paste html_</span>
+            <span id="stats" class="ms-auto mono small text-secondary"></span>
+          </div>
+          <textarea id="code" class="form-control rounded-0" spellcheck="false"></textarea>
+          <div class="card-footer bg-white d-flex flex-wrap gap-2">
+            <button id="btnCode" class="btn btn-dark"><i class="bi bi-code-slash"></i> <span data-i18n="cCode"></span></button>
+            <button id="btnSample" class="btn btn-outline-primary"><i class="bi bi-magic"></i> <span data-i18n="sample"></span></button>
+            <button id="btnDownload" class="btn btn-outline-secondary"><i class="bi bi-download"></i> .html</button>
+            <button id="btnClear" class="btn btn-outline-danger ms-auto"><i class="bi bi-trash"></i> <span data-i18n="clear"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm overflow-hidden h-100">
+          <div class="card-header bg-white d-flex align-items-center gap-2">
+            <i class="bi bi-eye text-primary"></i><b data-i18n="live"></b>
+            <div class="btn-group btn-group-sm ms-auto">
+              <button class="btn btn-outline-secondary active" data-w="100%"><i class="bi bi-laptop"></i></button>
+              <button class="btn btn-outline-secondary" data-w="375px"><i class="bi bi-phone"></i></button>
+            </div>
+          </div>
+          <div class="p-3 bg-body-tertiary flex-grow-1"><div id="frameWrap" class="shadow-sm rounded overflow-hidden"><iframe id="preview" sandbox="allow-same-origin" title="preview"></iframe></div></div>
+          <div class="card-footer bg-white d-flex gap-2 flex-wrap">
+            <button id="btnDesign" class="btn btn-primary"><i class="bi bi-palette"></i> <span data-i18n="cDesign"></span></button>
+            <a class="btn btn-outline-danger" target="_blank" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new"><i class="bi bi-envelope-plus"></i> <span data-i18n="gmail"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="text-light pt-5 pb-3" style="background:#341350">
+  <div class="container-xl">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="mono fw-bold fs-5"><i class="bi bi-envelope-paper-heart-fill"></i> mail template send<span class="cur text-success">_</span></div>
+        <p class="small mt-2 mb-3 opacity-75" data-i18n="fDesc"></p>
+        <div class="mono small px-3 py-2 rounded d-inline-block" style="background:#120a1f"><span class="c-ok">$</span> made_by <span class="c-cmd">"Aman Kumar"</span></div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h6 class="fw-bold mb-3" data-i18n="fLinks"></h6>
+        <ul class="list-unstyled small d-grid gap-2 mb-0">
+          <li><a class="text-light" href="#top" data-i18n="nWhy"></a></li><li><a class="text-light" href="#how" data-i18n="nHow"></a></li>
+          <li><a class="text-light" href="#templates" data-i18n="nTpl"></a></li><li><a class="text-light" href="#editor" data-i18n="nEd"></a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <h6 class="fw-bold mb-3" data-i18n="fTips"></h6>
+        <ul class="list-unstyled small d-grid gap-2 mb-0 opacity-75">
+          <li><i class="bi bi-check2-circle text-success"></i> <span data-i18n="tip1"></span></li>
+          <li><i class="bi bi-check2-circle text-success"></i> <span data-i18n="tip2"></span></li>
+          <li><i class="bi bi-check2-circle text-success"></i> <span data-i18n="tip3"></span></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-4 opacity-25">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 small">
+      <span><i class="bi bi-heart-fill text-danger"></i> <span data-i18n="fMade"></span></span>
+      <span class="opacity-75">© 2026 mail template send · <span data-i18n="fRights"></span></span>
+      <a href="#top" class="btn btn-sm btn-light"><i class="bi bi-arrow-up"></i> <span data-i18n="top"></span></a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal fade" id="viewModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="mTitle"></h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body p-0"><iframe id="mFrame" sandbox="allow-same-origin" title="template"></iframe></div>
+    <div class="modal-footer justify-content-start">
+      <button id="mDesign" class="btn btn-primary"><i class="bi bi-palette"></i> <span data-i18n="cDesign"></span></button>
+      <button id="mCode" class="btn btn-dark"><i class="bi bi-code-slash"></i> <span data-i18n="cCode"></span></button>
+      <button id="mUse" class="btn btn-outline-primary ms-auto"><i class="bi bi-pencil-square"></i> <span data-i18n="useEd"></span></button>
+    </div>
+  </div></div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast align-items-center text-bg-dark border-0"><div class="d-flex"><div id="toastMsg" class="toast-body"></div><button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+
+/* ---------- Language (default English) ---------- */
+const L = {
+en:{nWhy:'Why',nHow:'How it works',nTpl:'Templates',nEd:'Editor',nTry:'Try now',badge:'Free • No login • Pure HTML',
+h1:"Send emails with <span class='grad'>best UI</span>",lead:'Pick a beautiful HTML email template, preview it live and paste it into Gmail in one click. No more boring plain-text emails.',
+cta1:'Browse templates',cta2:'Paste your HTML',
+f1t:'Professional look',f1d:'Headers, footers and buttons that build trust.',f2t:'Live preview',f2d:'See desktop and mobile design instantly.',
+f3t:'Two copy options',f3d:'Separate buttons for Copy Code and Copy Design.',f4t:'Mobile friendly',f4d:'Light, dark, small and wide templates ready.',
+howT:'How does it work?',howS:'Your email is ready in 4 simple steps',
+s1t:'Choose a template',s1d:'Pick any design from the gallery or paste your own HTML in the editor.',
+s2t:'Preview it',s2d:'Press View or edit in the editor. The design updates instantly.',
+s3t:'Copy',s3d:'<b>Copy Design</b> = a design you can paste into email. <b>Copy Code</b> = HTML code only.',
+s4t:'Paste in Gmail',s4d:'Gmail → Compose → <kbd>Ctrl+V</kbd> in the body → add recipient &amp; subject → Send.',
+warn:"<b>Note:</b> Gmail removes <code>&lt;style&gt;</code> tags, so keep CSS inline in <code>style=''</code>. Use <code>https://</code> image links. All our templates are already inline.",
+tplT:'Ready Email Templates',tplS:'Light, dark, purple, small login-width and wide. View or copy.',
+edT:'Your HTML Editor',edS:'Paste HTML → see design → Copy Design → paste in Gmail',
+view:'View',design:'Design',code:'Code',cCode:'Copy Code',cDesign:'Copy Design',sample:'Sample',clear:'Clear',live:'Live Design',gmail:'Open Gmail Compose',useEd:'Open in editor',
+ph:'<!-- Paste your email HTML here -->',empty:'Your design will appear here…',lines:'lines',
+tCode:'HTML code copied ✔',tDesign:'Design copied ✔ Press Ctrl+V in Gmail',tFail:'Copy failed, please try again',tPaste:'Paste some code first',tSample:'Sample loaded',
+fDesc:'Beautiful HTML email templates you can preview, copy and send in seconds.',fLinks:'Quick links',fTips:'Quick tips',
+tip1:'Use inline CSS for Gmail',tip2:'Use https:// image links',tip3:'Send a test to yourself first',
+fMade:'Website made by <b>Aman Kumar</b>',fRights:'All rights reserved',top:'Back to top'},
+hi:{nWhy:'क्यों',nHow:'कैसे काम करता है',nTpl:'टेम्पलेट्स',nEd:'एडिटर',nTry:'अभी आज़माएँ',badge:'फ्री • बिना लॉगिन • सिर्फ़ HTML',
+h1:"<span class='grad'>शानदार डिज़ाइन</span> के साथ ईमेल भेजें",lead:'सुंदर HTML ईमेल टेम्पलेट चुनें, लाइव प्रीव्यू देखें और एक क्लिक में Gmail में पेस्ट करें। अब बोरिंग सादे ईमेल नहीं।',
+cta1:'टेम्पलेट देखें',cta2:'अपना HTML पेस्ट करें',
+f1t:'प्रोफेशनल लुक',f1d:'हेडर, फुटर और बटन जो भरोसा बढ़ाते हैं।',f2t:'लाइव प्रीव्यू',f2d:'डेस्कटॉप और मोबाइल डिज़ाइन तुरंत देखें।',
+f3t:'दो कॉपी विकल्प',f3d:'कोड कॉपी और डिज़ाइन कॉपी के अलग बटन।',f4t:'मोबाइल फ्रेंडली',f4d:'लाइट, डार्क, छोटे और चौड़े टेम्पलेट तैयार।',
+howT:'यह कैसे काम करता है?',howS:'4 आसान स्टेप में आपका ईमेल तैयार',
+s1t:'टेम्पलेट चुनें',s1d:'गैलरी से कोई डिज़ाइन चुनें या एडिटर में अपना HTML पेस्ट करें।',
+s2t:'प्रीव्यू देखें',s2d:'View दबाएँ या एडिटर में बदलाव करें। डिज़ाइन तुरंत अपडेट होता है।',
+s3t:'कॉपी करें',s3d:'<b>Copy Design</b> = ईमेल में पेस्ट होने वाला डिज़ाइन। <b>Copy Code</b> = सिर्फ़ HTML कोड।',
+s4t:'Gmail में पेस्ट करें',s4d:'Gmail → Compose → बॉडी में <kbd>Ctrl+V</kbd> → ईमेल आईडी और सब्जेक्ट डालें → Send।',
+warn:"<b>ध्यान दें:</b> Gmail <code>&lt;style&gt;</code> टैग हटा देता है, इसलिए CSS को <code>style=''</code> में inline रखें। इमेज के लिए <code>https://</code> लिंक इस्तेमाल करें। हमारे सभी टेम्पलेट पहले से inline हैं।",
+tplT:'तैयार ईमेल टेम्पलेट',tplS:'लाइट, डार्क, पर्पल, छोटे लॉगिन-साइज़ और चौड़े। देखें या कॉपी करें।',
+edT:'आपका HTML एडिटर',edS:'HTML पेस्ट करें → डिज़ाइन देखें → Copy Design → Gmail में पेस्ट करें',
+view:'देखें',design:'डिज़ाइन',code:'कोड',cCode:'कोड कॉपी',cDesign:'डिज़ाइन कॉपी',sample:'सैंपल',clear:'साफ़ करें',live:'लाइव डिज़ाइन',gmail:'Gmail Compose खोलें',useEd:'एडिटर में खोलें',
+ph:'<!-- अपना ईमेल HTML यहाँ पेस्ट करें -->',empty:'आपका डिज़ाइन यहाँ दिखेगा…',lines:'लाइनें',
+tCode:'HTML कोड कॉपी हो गया ✔',tDesign:'डिज़ाइन कॉपी हो गया ✔ Gmail में Ctrl+V दबाएँ',tFail:'कॉपी नहीं हुआ, फिर कोशिश करें',tPaste:'पहले कोड पेस्ट करें',tSample:'सैंपल लोड हो गया',
+fDesc:'सुंदर HTML ईमेल टेम्पलेट जिन्हें आप सेकंडों में देख, कॉपी और भेज सकते हैं।',fLinks:'त्वरित लिंक',fTips:'उपयोगी टिप्स',
+tip1:'Gmail के लिए inline CSS इस्तेमाल करें',tip2:'इमेज के लिए https:// लिंक रखें',tip3:'पहले खुद को भेजकर टेस्ट करें',
+fMade:'यह वेबसाइट <b>अमन कुमार</b> ने बनाई है',fRights:'सर्वाधिकार सुरक्षित',top:'ऊपर जाएँ'}
+};
+let lang = 'en'; try{ lang = localStorage.getItem('lang')==='hi' ? 'hi' : 'en'; }catch(e){}
+const t = k => L[lang][k];
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(e => e.innerHTML = t(e.dataset.i18n));
+  $('code').placeholder = t('ph');
+  document.querySelectorAll('#langBtns [data-l]').forEach(b => b.classList.toggle('active', b.dataset.l===lang));
+  if(typeof render==='function') render();
+}
+$('langBtns').onclick = e => { const b=e.target.closest('[data-l]'); if(!b) return; lang=b.dataset.l; try{localStorage.setItem('lang',lang);}catch(x){} applyLang(); };
+const toast = m => { $('toastMsg').textContent = m; bootstrap.Toast.getOrCreateInstance($('toast'),{delay:2200}).show(); };
+
+/* ---------- Template generator (all inline CSS = Gmail safe) ---------- */
+const DK = {bg:'#0b1020',card:'#111827',text:'#cbd5e1',head:'#ffffff',mut:'#64748b',line:'#1f2937',soft:'#1e1b4b'};
+function build(o){
+  o = Object.assign({bg:'#f4f6fb',card:'#ffffff',text:'#475569',head:'#0f172a',mut:'#94a3b8',line:'#e2e8f0',soft:'#f4eefa',accent:'#341350',font:'Arial,Helvetica,sans-serif',w:520,brand:'Brand',r:16},o);
+  const rows = (o.rows||[]).map(r=>`<tr><td style="padding:10px 0;border-bottom:1px solid ${o.line};color:${o.mut}">${r[0]}</td><td style="padding:10px 0;border-bottom:1px solid ${o.line};text-align:right;color:${o.head};font-weight:bold">${r[1]}</td></tr>`).join('');
+  const hdr = o.band ? `<tr><td style="background:${o.band};padding:28px;text-align:center;color:#ffffff;font-size:22px;font-weight:bold;letter-spacing:.5px">${o.brand}</td></tr>`
+    : `<tr><td style="padding:28px 28px 0;text-align:center;color:${o.accent};font-weight:bold;font-size:13px;letter-spacing:2px;text-transform:uppercase">${o.brand}</td></tr>`;
+  return `<div style="background:${o.bg};padding:28px 12px;font-family:${o.font}">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:${o.w}px;margin:0 auto;background:${o.card};border-radius:${o.r}px;overflow:hidden">
+${hdr}
+<tr><td style="padding:28px;text-align:center;color:${o.text};font-size:15px;line-height:1.7">
+${o.icon?`<div style="font-size:46px;line-height:1">${o.icon}</div>`:''}
+<h1 style="margin:12px 0 4px;font-size:26px;color:${o.head}">${o.title}</h1>
+<p style="margin:0 0 14px;font-weight:bold;color:${o.head}">${o.sub}</p>
+<p style="margin:0;text-align:${o.al||'center'}">${o.body}</p>
+${o.otp?`<div style="margin:20px 0;padding:14px;font-size:30px;letter-spacing:8px;font-weight:bold;color:${o.accent};background:${o.soft};border-radius:10px">${o.otp}</div>`:''}
+${rows?`<table width="100%" cellpadding="0" cellspacing="0" style="margin-top:18px;font-size:14px;text-align:left">${rows}</table>`:''}
+${o.btn?`<p style="margin:26px 0 4px"><a href="#" style="display:inline-block;background:${o.accent};color:${o.btnc||'#ffffff'};padding:13px 30px;border-radius:${o.br||8}px;text-decoration:none;font-weight:bold;font-size:14px">${o.btn}</a></p>`:''}
+</td></tr>
+<tr><td style="padding:18px 28px 26px;text-align:center;font-size:12px;line-height:1.7;color:${o.mut};border-top:1px solid ${o.line}">
+<a href="#" style="color:${o.mut}">Privacy</a> &nbsp;•&nbsp; <a href="#" style="color:${o.mut}">Support</a> &nbsp;•&nbsp; <a href="#" style="color:${o.mut}">Unsubscribe</a><br>You are receiving this email because you have an account with ${o.brand}.</td></tr>
+</table></div>`;
+}
+
+const T = [
+ {n:'Reminder Notice',tags:['Light','Medium','Blue'],o:{bg:'#ffffff',card:'#f1e9f8',soft:'#fff',accent:'#341350',w:440,icon:'🔔',brand:'Notice Center',title:'Reminder',sub:'Privacy Notice Update',body:'We have updated our Privacy Notice to give you the latest information on how we collect and use your data. You can review our updated Privacy Notice here. This update will be effective on September 1.',btn:'Okay',btnc:'#fff',br:20,font:"'Trebuchet MS',Arial,sans-serif"}},
+ {n:'Login OTP',tags:['Light','Small','Purple'],o:{w:380,icon:'🔐',brand:'Nexavista',title:'Your login code',sub:'Valid for 10 minutes',body:'Use this one-time password to sign in to your admin panel. Do not share it with anyone.',otp:'482913'}},
+ {n:'Welcome Purple',tags:['Light','Wide','Purple'],o:{w:600,band:'linear-gradient(135deg,#7c3aed,#c026d3)',icon:'🎉',brand:'Welcome Aboard',title:'Hi Aman, you are in!',sub:'Your account is ready',body:'Thanks for joining us. Explore your dashboard, set up your profile and start building something great today.',btn:'Open Dashboard',font:"'Segoe UI',Tahoma,sans-serif"}},
+ {n:'Terminal Login Alert',tags:['Dark','Small','Terminal'],o:Object.assign({},DK,{accent:'#22c55e',w:420,r:10,font:"'Courier New',monospace",brand:'$ security_alert',icon:'⚠️',title:'New login detected',sub:'> device: Chrome / Windows',body:'A new sign-in was found on your account from Mathura, India. If this was you, no action is needed.',btn:'Secure Account',btnc:'#052e16',br:4,al:'left'})},
+ {n:'Daily Work Report',tags:['Light','Wide','Navy'],o:{w:600,band:'#0f172a',accent:'#341350',brand:'Template',title:'Daily Work Report',sub:'Employee Daily Work Report',body:'Dear Team, please find today\'s work summary below.',rows:[['Website design','✅ Done'],['Email template','⏳ In progress'],['Client meeting','✅ Done']],btn:'View Full Report',r:10,al:'left'}},
+ {n:'Password Reset',tags:['Light','Small','Purple'],o:{w:400,icon:'🔑',brand:'Securely',title:'Reset password',sub:'We received your request',body:'Click the button below to choose a new password. This link expires in 30 minutes. If you did not ask for it, ignore this email.',btn:'Reset Password',br:50,font:"Verdana,Geneva,sans-serif"}},
+ {n:'Payment Success',tags:['Light','Medium','Green'],o:{w:480,accent:'#16a34a',soft:'#f0fdf4',band:'#16a34a',icon:'✅',brand:'PayEasy',title:'Payment received',sub:'Order #A-20481',body:'Thank you! Your payment was successful. Here is your receipt.',rows:[['Plan','Pro Monthly'],['Date','08 Oct 2026'],['Amount','₹ 999']],btn:'Download Invoice',font:"Tahoma,Geneva,sans-serif"}},
+ {n:'Dark Purple Meeting',tags:['Dark','Medium','Purple'],o:Object.assign({},DK,{bg:'#1e1b4b',card:'#2e1065',text:'#ddd6fe',line:'#4c1d95',mut:'#a78bfa',soft:'#4c1d95',accent:'#a855f7',w:500,icon:'📅',brand:'Team Sync',title:'Meeting Invite',sub:'Weekly product review',body:'You are invited to join our weekly sync. Please be on time.',rows:[['Date','Fri, 10 Oct'],['Time','11:00 AM'],['Where','Google Meet']],btn:'Join Meeting',font:"Georgia,'Times New Roman',serif"})},
+ {n:'Product Launch',tags:['Light','Wide','Purple'],o:{w:600,bg:'#f5f3ff',band:'linear-gradient(135deg,#4c1d95,#7c3aed)',icon:'🚀',brand:'Launch Day',title:'Something big is here',sub:'Meet our new release',body:'After months of work, we are live. Faster, cleaner and smarter, built for the way you work.',btn:'Explore Now',br:30,font:"Georgia,'Times New Roman',serif"}},
+ {n:'Minimal Thank You',tags:['Light','Small','Simple'],o:{w:380,bg:'#ffffff',card:'#ffffff',accent:'#111827',icon:'🙏',brand:'Thanks',title:'Thank you!',sub:'We value your feedback',body:'Your response helps us improve. Have a wonderful day.',r:0,font:"'Trebuchet MS',Arial,sans-serif"}},
+ {n:'Security Alert',tags:['Light','Medium','Red'],o:{w:480,accent:'#dc2626',soft:'#fef2f2',band:'#dc2626',icon:'🛡️',brand:'Security Team',title:'Suspicious activity',sub:'Action required',body:'We noticed an unusual sign-in attempt on your account. Please verify it was you to keep your data safe.',btn:'Review Activity',font:"Verdana,Geneva,sans-serif"}},
+ {n:'Newsletter Dark',tags:['Dark','Wide','Purple'],o:Object.assign({},DK,{accent:'#8b5cf6',w:600,band:'#000000',icon:'📰',brand:'The Weekly Byte',title:'This week in tech',sub:'Issue #42',body:'Top stories, tools and tips curated for developers and designers. Grab a coffee and enjoy the read.',btn:'Read Newsletter',br:6,font:"'Segoe UI',Tahoma,sans-serif"})}
+];
+
+
+
+/* ---------- Copy helpers ---------- */
+async function copyDesign(html, frame){
+  try{
+    await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([html.replace(/<[^>]+>/g,' ')],{type:'text/plain'})})]);
+    return true;
+  }catch(e){}
+  try{
+    const f = frame || Object.assign(document.body.appendChild(document.createElement('iframe')),{sandbox:'allow-same-origin',style:'position:fixed;left:-9999px;width:700px;height:900px'});
+    if(!frame){ f.srcdoc = html; await new Promise(r=>f.onload=r); }
+    const d = f.contentDocument, s = d.getSelection(), r = d.createRange();
+    f.contentWindow.focus(); r.selectNodeContents(d.body); s.removeAllRanges(); s.addRange(r);
+    const ok = d.execCommand('copy'); s.removeAllRanges(); if(!frame) f.remove(); return ok;
+  }catch(e){ return false; }
+}
+async function copyText(x){ try{ await navigator.clipboard.writeText(x); }catch(e){ const a=document.createElement('textarea'); a.value=x; document.body.appendChild(a); a.select(); document.execCommand('copy'); a.remove(); } }
+const doDesign = async (html, fr) => toast(t(await copyDesign(html, fr) ? 'tDesign' : 'tFail'));
+const doCode = async html => { await copyText(html); toast(t('tCode')); };
+
+/* ---------- Gallery ---------- */
+const HTMLS = T.map(x => build(x.o));
+$('gallery').innerHTML = T.map((x,i)=>`
+ <div class="col-md-6 col-lg-4 reveal"><div class="card border-0 shadow-sm lift h-100 overflow-hidden">
+  <div class="thumb"><iframe sandbox="allow-same-origin" tabindex="-1" title="${x.n}" srcdoc="${HTMLS[i].replace(/&/g,'&amp;').replace(/"/g,'&quot;')}"></iframe></div>
+  <div class="card-body">
+   <div class="d-flex justify-content-between align-items-center mb-3"><b>${x.n}</b><span>${x.tags.map(g=>`<span class="badge ${g=='Dark'?'text-bg-dark':'text-bg-light border'} ms-1">${g}</span>`).join('')}</span></div>
+   <div class="d-flex gap-2">
+    <button class="btn btn-outline-primary btn-sm flex-fill" data-a="view" data-i="${i}"><i class="bi bi-eye"></i> <span data-i18n="view"></span></button>
+    <button class="btn btn-primary btn-sm flex-fill" data-a="design" data-i="${i}"><i class="bi bi-palette"></i> <span data-i18n="design"></span></button>
+    <button class="btn btn-dark btn-sm flex-fill" data-a="code" data-i="${i}"><i class="bi bi-code-slash"></i> <span data-i18n="code"></span></button>
+   </div></div></div></div>`).join('');
+function fitThumbs(){ document.querySelectorAll('.thumb').forEach(e=>e.firstElementChild.style.transform=`scale(${e.clientWidth/640})`); }
+addEventListener('resize',fitThumbs); fitThumbs();
+
+let cur = 0; const modal = new bootstrap.Modal($('viewModal'));
+$('gallery').onclick = e => {
+  const b = e.target.closest('button'); if(!b) return; const i = +b.dataset.i;
+  if(b.dataset.a==='design') doDesign(HTMLS[i]);
+  if(b.dataset.a==='code') doCode(HTMLS[i]);
+  if(b.dataset.a==='view'){ cur=i; $('mTitle').textContent=T[i].n; $('mFrame').srcdoc=HTMLS[i]; modal.show(); }
+};
+$('mDesign').onclick = () => doDesign(HTMLS[cur]);
+$('mCode').onclick = () => doCode(HTMLS[cur]);
+$('mUse').onclick = () => { code.value = HTMLS[cur]; render(); modal.hide(); setTimeout(()=>$('editor').scrollIntoView({behavior:'smooth'}),300); };
+
+/* ---------- Editor ---------- */
+const code = $('code'), frame = $('preview');
+function render(){
+  frame.srcdoc = code.value.trim() ? code.value : `<p style="font:14px sans-serif;color:#94a3b8;text-align:center;margin-top:40px">${t('empty')}</p>`;
+  $('stats').textContent = (code.value ? code.value.split('\n').length : 0) + ' ' + t('lines');
+}
+code.addEventListener('input', render);
+$('btnCode').onclick = () => code.value.trim() ? doCode(code.value) : toast(t('tPaste'));
+$('btnDesign').onclick = () => code.value.trim() ? doDesign(code.value, frame) : toast(t('tPaste'));
+$('btnSample').onclick = () => { code.value = HTMLS[4]; render(); toast(t('tSample')); };
+$('btnClear').onclick = () => { code.value=''; render(); };
+$('btnDownload').onclick = () => { const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([code.value],{type:'text/html'})); a.download='email-template.html'; a.click(); };
+document.querySelectorAll('[data-w]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('[data-w]').forEach(x=>x.classList.remove('active')); b.classList.add('active'); $('frameWrap').style.maxWidth=b.dataset.w; });
+
+/* ---------- Hero terminal animation ---------- */
+const LINES = [['$ mailcanvas new --template welcome','c-cmd'],['✔ template loaded (12 available)','c-ok'],['✔ live preview rendered','c-ok'],['$ copy --design','c-cmd'],['✔ copied! open Gmail → Ctrl+V','c-ok'],['$ send --to team@company.com','c-cmd'],['✔ email delivered 🚀','c-ok']];
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+async function runTerm(){
+  const pre = $('term'), cur = document.createElement('span'); cur.className='cur'; cur.textContent='█';
+  while(true){
+    pre.textContent=''; 
+    for(const [txt,cls] of LINES){
+      const s = document.createElement('span'); s.className=cls; pre.appendChild(s); pre.appendChild(document.createTextNode('\n')); s.after(cur);
+      if(cls==='c-cmd'){ for(const ch of txt){ s.textContent+=ch; await sleep(38); } await sleep(350); } else { await sleep(300); s.textContent=txt; await sleep(500); }
+    }
+    await sleep(2600);
+  }
+}
+runTerm();
+
+/* ---------- Scroll reveal + init ---------- */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} }),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+applyLang();
+</script>
+</body>
+</html>
